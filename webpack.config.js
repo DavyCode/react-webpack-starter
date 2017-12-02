@@ -29,22 +29,22 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        // port: 9000,
+        // port: 9000,   //set a default port
         stats: 'minimal', //'errors-only' || 'none'|| 'normal' || 'verbose'
         open: true
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Project Demo",
-            template: './src/index.html',
+            title: "Project Demo",           
+            template: './src/index.html',   //template file
             // minify: {
             //     collapseWhitespace: true
             // },
             hash: true,
-            filename : './../dist/index.html'
+            filename : './../dist/index.html'  //output file to dist
         }),
         new ExtractTextPlugin({
-            filename: "bundle.css",
+            filename: "app.css",            //generate file to dist
             // disabled: false,
             // allChunks: true
         }),
