@@ -18,7 +18,13 @@ module.exports = {
                 use: ['css-loader', 'sass-loader'],
                 publicPath: '/dist'
             }),
-        }]
+        },
+        {
+         test: /\.js$/,
+          exclude: /node_modules/, 
+          use: "babel-loader" 
+        }
+    ]
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
@@ -31,9 +37,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Project Demo",
             template: './src/index.html',
-            minify: {
-                collapseWhitespace: true
-            },
+            // minify: {
+            //     collapseWhitespace: true
+            // },
             hash: true
         }),
         new ExtractTextPlugin({
