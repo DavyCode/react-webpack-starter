@@ -46,7 +46,7 @@ module.exports = {
         new ExtractTextPlugin({
             filename: "app.css",            //generate file to dist
             // disabled: false,
-            // allChunks: true
+            allChunks: true
         }),
     ]
 }
