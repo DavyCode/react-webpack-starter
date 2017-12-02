@@ -40,7 +40,8 @@ module.exports = {
             // minify: {
             //     collapseWhitespace: true
             // },
-            hash: true
+            hash: true,
+            filename : './../dist/index.html'
         }),
         new ExtractTextPlugin({
             filename: "bundle.css",
