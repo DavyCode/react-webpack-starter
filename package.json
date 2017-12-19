@@ -5,8 +5,8 @@
     "main": "app.js",
     "scripts": {
         "dev": "webpack-dev-server",
-        "prod": "npm run clean && webpack -p",
-        "clean" : "rimraf ./dist/*"
+        "prod": "npm run clean && set NODE_ENV=production && webpack -p",
+        "clean": "rimraf ./dist/*"
     },
     "author": "Azemoh Paul",
     "license": "ISC",
