@@ -1,30 +1,27 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const path = require('path');
+const webpack = require('webpack')
 
 
 module.exports = {
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'app.bundle.js'
+        filename: '[name].bundle.js'
             // filename: './dist/app.bundle.js'
     },
     module: {
         rules: [{
-            test: /\.scss$/,
-            use: ExtractTextPlugin.extract({
-                fallback: 'style-loader',
-                use: ['css-loader', 'sass-loader'],
-                publicPath: '/dist'
-            }),
-        },
-        {
-         test: /\.js$/,
-          exclude: /node_modules/, 
-          use: "babel-loader" 
-        }
-    ]
+                test: /\.scss$/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: "babel-loader"
+            }
+        ]
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
@@ -35,18 +32,20 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Project Demo",           
-            template: './src/index.html',   //template file
-            // minify: {
-            //     collapseWhitespace: true
-            // },
+            title: "Project Demo",
+            template: './src/index.html', //template file
+            minify: {
+                collapseWhitespace: true
+            },
             hash: true,
-            filename : './../dist/index.html'  //output file to dist
+            // filename: './../dist/index.html' //output file to dist
         }),
         new ExtractTextPlugin({
-            filename: "app.css",            //generate file to dist
-            // disabled: false,
+            filename: "app.css", //generate file to dist
+            disable: false,
             allChunks: true
         }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin()
     ]
 }

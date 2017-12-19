@@ -2,7 +2,7 @@
 
 A complete customizable webpack react boilerplate for your react project 
 
-git clone the project && cd into project folder
+git clone the project  [https://github.com/DavyCode/react-webpack-starter.git] && cd into project folder
 
 npm install dependencies
 
