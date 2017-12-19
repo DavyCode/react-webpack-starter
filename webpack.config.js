@@ -31,6 +31,16 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: "babel-loader"
+            },
+            {
+                test: /\.(jpe?g|PNG|png|gif|svg)$/i,
+                // use: "file-loader?name=[path][name].[ext]"
+                use: [
+                    // "file-loader?name=images/[name].[ext]",  //both output and public path matches
+                    "file-loader?name=[name].[ext]&outputPath=images/", //&outputPath=images/ if required
+                    "image-webpack-loader"   //optimize image files for production
+                ]
+                // use: "file-loader?name=[hash:6].[ext]&outputPath=images/"   //hash filename
             }
         ]
     },
@@ -45,9 +55,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: "Project Demo",
             template: './src/index.html', //template file
-            minify: {
-                collapseWhitespace: true
-            },
+            // minify: {
+            //     collapseWhitespace: true
+            // },
             hash: true,
             // filename: './../dist/index.html' //output file to dist
         }),
