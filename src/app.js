@@ -1,4 +1,7 @@
-const css = require('./app.scss')
+const css = require('./app.scss');
+
+require('bootstrap');
+$(document).bootstrap();
 
 
 import React from 'react';
