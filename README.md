@@ -10,7 +10,11 @@ For production build : npm run prod
 
 For development : npm run dev 
 
-setup uses webpack-dev-server and its open on port 8080 on your localhost
+Setup uses webpack-dev-server and its open on port 8080 on your localhost
+
+I'll constantly modify this project so you can watch it
+
+I'm open to suggestions on how to improve and optimize the build process
 
 Enjoy!!
 
