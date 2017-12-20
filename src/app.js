@@ -1,7 +1,7 @@
 const css = require('./app.scss');
 
-require('bootstrap');
-$(document).bootstrap();
+ import 'bootstrap';
+// $(document).bootstrap();
 
 
 import React from 'react';

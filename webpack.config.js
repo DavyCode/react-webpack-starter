@@ -39,11 +39,13 @@ var bootstrapConfig = isProd? bootstrapEntryPoints.prod : bootstrapEntryPoints.d
 
 
 module.exports = {
+    devtool: 'eval',
     entry: [
         'webpack/hot/only-dev-server',
         'tether',
-       './src/app.js'
-        // bootstrapConfig
+        'font-awesome/scss/font-awesome.scss',
+       './src/app.js',
+        bootstrapConfig
     ],
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -62,6 +64,10 @@ module.exports = {
             {
                 test: /bootstrap\/dist\/js\/umd\//, use: 'imports-loader?jQuery=jquery'
             },
+            // font-awesome
+            {
+                 test: /font-awesome\.config\.js/, use: [{ loader: 'style-loader' },{ loader: 'font-awesome-loader' }]
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
@@ -72,7 +78,7 @@ module.exports = {
                 // use: "file-loader?name=[path][name].[ext]"
                 use: [
                     // "file-loader?name=images/[name].[ext]",  //both output and public path matches
-                    "file-loader?name=[name].[ext]&outputPath=images/", //&outputPath=images/ if required
+                    "file-loader?name=[name].[ext]&outputPath=images/", //&publicPath=images/ if required
                     "image-webpack-loader"   //optimize image files for production
                 ]
                 // use: "file-loader?name=[hash:6].[ext]&outputPath=images/"   //hash filename
