@@ -34,7 +34,8 @@ var cssProd = ExtractTextPlugin.extract({
 var cssConfig = isProd ? cssProd : cssDev;
 
 var bootstrapConfig = isProd? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
-
+console.log(`=>========***************=================================`);
+console.log(`is prod ${isProd}`)
 
 
 
@@ -45,7 +46,7 @@ module.exports = {
         'tether',
         'font-awesome/scss/font-awesome.scss',
        './src/app.js',
-        bootstrapConfig
+       bootstrapConfig
     ],
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -78,7 +79,7 @@ module.exports = {
                 // use: "file-loader?name=[path][name].[ext]"
                 use: [
                     // "file-loader?name=images/[name].[ext]",  //both output and public path matches
-                    "file-loader?name=[name].[ext]&outputPath=images/", //&publicPath=images/ if required
+                    "file-loader?name=[name].[ext]&outputPath=images/",   //&publicPath=images if required
                     "image-webpack-loader"   //optimize image files for production
                 ]
                 // use: "file-loader?name=[hash:6].[ext]&outputPath=images/"   //hash filename
